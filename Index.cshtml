@@ -1,0 +1,93 @@
+﻿@model version2.Models.ProductSold
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div>
+    <div class="container">
+        <h3>Sales Record</h3>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add Sale</button><br /><br />
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        ProductName
+                    </th>
+                    <th>
+                        CustomerName
+                    </th>
+                    <th>
+                        StoreName
+                    </th>
+                    <th>
+                        DateSold
+                    </th>
+                    <th>
+                        Action(Edit)
+                    </th>
+                    <th>
+                        Action(Delete)
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+
+        </table>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Add or Edit Sale</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="Id">Id</label>
+                            <input type="text" class="form-control" id="Id" placeholder="Id" disabled="disabled" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ProductId">ProductName</label>
+                            @Html.DropDownListFor(x => x.ProductId, ViewBag.ProductId as SelectList, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="CustomerId">CustomerName</label>
+                            @Html.DropDownListFor(x => x.CustomerId, ViewBag.CustomerId as SelectList, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="StoreId">StoreName</label>
+                            @Html.DropDownListFor(x => x.StoreId, ViewBag.StoreId as SelectList, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="DateSold">DateSold</label>
+                            <input type="text" class="form-control" id="DateSold" placeholder="DateSold" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="btnAdd" onclick="return Add();">Create</button>
+                    <button type="button" class="btn btn-success" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/productsold.js"></script>
+
+}
+
+
+
+
